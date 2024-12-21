@@ -2,7 +2,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
     const input1 = document.getElementById('input1').value;
     const input2 = document.getElementById('input2').value;
     const fileInput = document.getElementById('fileInput').files[0];
-    const access_token = "2406-ZNNHG4UB32LBGA7T8ZJR3FSQ2DVVEVRHDBASQWYGVDGVGXJLK28NY5C7DKVJ6HK8-GYGM3F3SJFMZ3WMZPL9V52RY4UW7VGNVJUWFYTV5VGX6B83WPQVFFDH6KCV33G5P"; // Thay bằng token thực tế
+    const access_token =""  // Thay bằng token thực tế
     const username = "nienluong";       // Thay bằng username thực tế
 
     if (!fileInput) {
@@ -21,7 +21,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
         formData.append('fileInput', fileInput);
     }
 
-    fetch('https://request.base.com.vn/webhook/create/-QY-vqY4vEFQUv6w_RvV9MU3_NvtBgHNEroGHn8ls_psTijyJalCyMaSpD5QtFHO82JbedX6SiH7y8QTagY4sV_0A467egZtavwpAQDYZzTyCK7n7WGldRH5OJteaNahWir6FqRB4r0BhHg35gQ3b6OvgCJapCPRu-6fRwlIzSs', {
+    fetch('https://request.base.com.vn/extapi/v1/request/create', {
         method: 'POST',
         body: formData
     })
