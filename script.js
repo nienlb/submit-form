@@ -21,7 +21,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
         formData.append('fileInput', fileInput);
     }
 
-    fetch('https://request.base.com.vn/extapi/v1/request/create', {
+    fetch('https://request.base.com.vn/webhook/create/-QY-vqY4vEFQUv6w_RvV9MU3_NvtBgHNEroGHn8ls_psTijyJalCyMaSpD5QtFHO82JbedX6SiH7y8QTagY4sV_0A467egZtavwpAQDYZzTyCK7n7WGldRH5OJteaNahWir6FqRB4r0BhHg35gQ3b6OvgCJapCPRu-6fRwlIzSs', {
         method: 'POST',
         body: formData
     })
