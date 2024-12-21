@@ -2,11 +2,19 @@ document.getElementById('submitButton').addEventListener('click', function () {
     const input1 = document.getElementById('input1').value;
     const input2 = document.getElementById('input2').value;
     const fileInput = document.getElementById('fileInput').files[0];
+    const access_token = "2406-ZNNHG4UB32LBGA7T8ZJR3FSQ2DVVEVRHDBASQWYGVDGVGXJLK28NY5C7DKVJ6HK8-GYGM3F3SJFMZ3WMZPL9V52RY4UW7VGNVJUWFYTV5VGX6B83WPQVFFDH6KCV33G5P"; // Thay bằng token thực tế
+    const username = "nienluong";       // Thay bằng username thực tế
+
+    if (!fileInput) {
+        alert("Vui lòng chọn một tệp tin.");
+        return;
+    }
+
 
     const formData = new FormData();
-    formData.append('access_token', "2406-ZNNHG4UB32LBGA7T8ZJR3FSQ2DVVEVRHDBASQWYGVDGVGXJLK28NY5C7DKVJ6HK8-GYGM3F3SJFMZ3WMZPL9V52RY4UW7VGNVJUWFYTV5VGX6B83WPQVFFDH6KCV33G5P");
+    formData.append('access_token', access_token);
     formData.append('name', input1);
-    formData.append('username', "nienluong");
+    formData.append('username', username);
     formData.append('custom_tong_ngan_sach_de_xuat', input2);
     formData.append('custom_file_ky_duyet', fileInput);
     if (fileInput) {
@@ -17,12 +25,18 @@ document.getElementById('submitButton').addEventListener('click', function () {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
-    .then(result => {
-        alert('Response: ' + JSON.stringify(result));
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();  // Chuyển đổi phản hồi thành JSON
+    })
+    .then(data => {
+        console.log("Response:", data);  // Xử lý kết quả trả về
+        alert("Yêu cầu gửi thành công!");
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Có loi roi: ' + error.message);
+        console.error("Error:", error);  // Xử lý lỗi nếu có
+        alert("Có lỗi xảy ra khi gửi yêu cầu.");
     });
 });
